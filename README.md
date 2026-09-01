@@ -109,7 +109,11 @@ Soit :
 Les écrans ne sont pas rafraîchis en permanence : les deux afficheurs des minutes sont redessinés lors d'un changement de minute, et les deux afficheurs des heures lors d'un changement d'heure.
 
 ## Matériel
-
+> **Note concernant les liens GoTronic :** le site GoTronic peut parfois retourner une erreur 500 lorsqu'un lien est ouvert directement depuis GitHub. Si cela se produit, faire un clic droit sur le lien, choisir **« Copier le lien »**, puis coller l'adresse directement dans la barre d'adresse du navigateur. Il s'agit des liens :
+> - Module RTC I2C DS3231 ADA3013
+> - Lecteur de carte microSD uPesy
+> - Lecteur de carte microSD uPesy
+> 
 | Quantité | Composant | Remarque |
 |---:|---|---|
 | 1 | ATmega328P-PU | Microcontrôleur AVR 8 bits monté sur support |
