@@ -226,6 +226,67 @@ Dans `loop()` :
 
 La fonction `bmpDraw()` lit progressivement chaque image sur la carte microSD et envoie ses pixels à l'écran concerné. Le tampon de 20 pixels constitue un compromis entre la vitesse de lecture et la faible quantité de mémoire vive disponible sur l'ATmega328P.
 
+### Noms de fichiers stockés en mémoire Flash
+
+L'ATmega328P ne dispose que de **2 048 octets de SRAM**. Pour éviter d'en consommer inutilement avec les noms des 29 fichiers BMP, ceux-ci sont stockés dans la mémoire Flash du microcontrôleur grâce à `PROGMEM` :
+
+```cpp
+static const char heures[29][8] PROGMEM = {
+  "HD0.bmp",
+  "HD1.bmp",
+  "HD2.bmp",
+  ...
+  "MU9.bmp"
+};
+```
+
+Le tableau contient uniquement les **noms des fichiers**. Les images BMP elles-mêmes restent stockées sur la carte microSD.
+
+Lorsqu'une image doit être affichée, le programme transmet directement le nom du fichier conservé en Flash à `bmpDraw()` :
+
+```cpp
+bmpDraw(tft, (__FlashStringHelper*) heures[x], 0, 0);
+```
+
+Le cast :
+
+```cpp
+(__FlashStringHelper*)
+```
+
+indique que la chaîne de caractères se trouve en mémoire Flash et non en SRAM.
+
+Le fonctionnement peut être résumé ainsi :
+
+```text
+Mémoire Flash de l'ATmega328P
+        │
+        │  nom du fichier : "HD1.bmp"
+        ▼
+      SD.open()
+        │
+        ▼
+    Carte microSD
+        │
+        │  contenu de l'image BMP
+        ▼
+      bmpDraw()
+        │
+        ▼
+     Écran TFT
+```
+
+Le programme utilise la même logique avec la macro `F()` pour certains messages envoyés sur le port série :
+
+```cpp
+Serial.print(F("File size: "));
+Serial.println(F("BMP format not recognized."));
+```
+
+Ces chaînes constantes restent elles aussi en mémoire Flash au lieu d'occuper la SRAM.
+
+Cette optimisation est particulièrement utile sur l'ATmega328P, dont la mémoire vive est limitée.
+
 ### Pourquoi conserver le code en l'état ?
 
 Ce programme est celui qui fonctionne réellement dans l'horloge. Certaines parties pourraient être réorganisées ou factorisées, mais une réécriture ferait perdre le lien direct entre le dépôt et la réalisation présentée. Le code est donc publié comme **code original fonctionnel**, accompagné d'explications plutôt que modifié a posteriori.
