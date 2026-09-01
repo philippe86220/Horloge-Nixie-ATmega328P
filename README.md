@@ -118,10 +118,10 @@ Les écrans ne sont pas rafraîchis en permanence : les deux afficheurs des minu
 | 2 | Condensateurs 100 nF | Découplage de l'alimentation du microcontrôleur |
 | 1 | Résistance 10 kΩ | Rappel au niveau haut de la broche `RESET` |
 | 4 | Écrans TFT 0,96 pouce, 80 × 160 pixels | Contrôleur ST7735, interface SPI |
-| 1 | [Module RTC I2C DS3231 ADA3013](https://www.gotronic.fr/art-module-rtc-i2c-ds3231-ada3013-24708.htm) | Horloge temps réel de précision avec pile de sauvegarde |
-| 1 | [Lecteur de carte microSD uPesy](https://www.gotronic.fr/art-lecteur-carte-microsd-upesy-37485.htm) | Stockage des 29 images BMP |
+| 1 | [Module RTC I2C DS3231 ADA3013](https://www.gotronic.fr/art-module-rtc-i2c-ds3231-ada3013_24708.htm) | Horloge temps réel de précision avec pile de sauvegarde |
+| 1 | [Lecteur de carte microSD uPesy](https://www.gotronic.fr/art-lecteur-carte-microsd-upesy_37485.htm) | Stockage des 29 images BMP |
 | 1 | Carte microSD | Une très faible capacité suffit pour les images |
-| 2 | [LED orange 5 mm L7113NC](https://www.gotronic.fr/art-led-5-mm-l7113nc-2086.htm) | Séparateur clignotant entre heures et minutes |
+| 2 | [LED orange 5 mm L7113NC](https://www.gotronic.fr/art-led-5-mm-l7113nc_2086.htm) | Séparateur clignotant entre heures et minutes |
 | 2 | Résistances 1 kΩ | Limitation du courant dans les LED |
 | 1 | Diode 1N4007 | Protection en série sur l'entrée d'alimentation |
 | 1 | Connecteur d'alimentation 5,5 × 2,0 mm | Entrée de l'alimentation continue |
