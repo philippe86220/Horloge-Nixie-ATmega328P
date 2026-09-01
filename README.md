@@ -451,3 +451,9 @@ La gestion du module DS3231 repose sur la bibliothèque `simpleRTC` de **bricole
 Le projet a initialement été présenté dans le sujet suivant :
 
 [Horloge imitation chiffres NIXIE — Forum Arduino](https://forum.arduino.cc/t/horloge-imitation-chiffres-nixie/1281899)
+
+### Participation de ChatGPT
+
+**ChatGPT (OpenAI)** a été utilisé lors de la préparation de ce dépôt pour accompagner la relecture du programme, vérifier et expliquer certains points techniques, et aider à structurer et rédiger la documentation.
+
+Le montage électronique et le programme d'origine restent ceux réalisés par l'auteur du projet.
