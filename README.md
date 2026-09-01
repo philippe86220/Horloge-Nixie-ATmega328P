@@ -293,11 +293,121 @@ Ce programme est celui qui fonctionne réellement dans l'horloge. Certaines part
 
 ## Programmation de l'ATmega328P
 
-L'ATmega328P est installé directement sur le circuit imprimé avec son quartz de 16 MHz et les composants nécessaires à son fonctionnement. La préparation d'un microcontrôleur autonome, l'installation éventuelle du bootloader et la méthode de téléversement ne sont pas développées ici.
+L'ATmega328P est installé directement sur le circuit imprimé avec un
+quartz externe de **16 MHz**. Le microcontrôleur est programmé
+directement par l'interface ISP à l'aide d'un **AVRISP mkII**.
 
-Une démonstration complète est disponible dans cette vidéo :
+La configuration utilisée et testée avec **Arduino IDE 1.8.19** et
+**MiniCore** est la suivante :
 
-[Programmer un ATmega328P autonome — vidéo YouTube](https://www.youtube.com/watch?v=Miov8Kn8dDk)
+``` text
+Microcontrôleur : ATmega328
+Variant          : 328P / 328PA
+Clock            : External 16 MHz
+Bootloader       : No bootloader
+BOD              : 2.7 V
+EEPROM           : retained
+Compiler LTO     : enabled
+Programmateur    : AVRISP mkII
+```
+
+Le programme est envoyé directement dans l'ATmega328P avec :
+
+``` text
+Croquis → Téléverser avec un programmateur
+```
+
+Comme la programmation s'effectue par ISP, aucun port série
+`/dev/ttyACM*` ou `/dev/ttyUSB*` n'est nécessaire. Il est donc normal
+que le menu **Port** de l'IDE Arduino reste vide.
+
+### Utilisation de l'AVRISP mkII sous Debian 13
+
+Sous Debian 13, l'AVRISP mkII est détecté comme périphérique USB. Sa
+présence peut être vérifiée avec :
+
+``` bash
+lsusb
+```
+
+Il apparaît sous la forme :
+
+``` text
+ID 03eb:2104 Atmel Corp. AVR ISP mkII
+```
+
+Lors du premier essai, `avrdude` peut ne pas disposer des droits
+nécessaires pour accéder au programmateur :
+
+``` text
+Warning: cannot open device: Permission denied
+Error: did not find any USB device usb (03eb:2104)
+Error: unable to open port usb for programmer avrispmkII
+```
+
+Sur la machine utilisée pour ce projet, le problème a été résolu en
+ajoutant une règle `udev`.
+
+Créer le fichier :
+
+``` bash
+sudo nano /etc/udev/rules.d/99-avrisp.rules
+```
+
+et y ajouter :
+
+``` text
+SUBSYSTEM=="usb", ATTR{idVendor}=="03eb", ATTR{idProduct}=="2104", MODE="0666"
+```
+
+Recharger ensuite les règles `udev` :
+
+``` bash
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+
+Puis débrancher et rebrancher l'AVRISP mkII.
+
+Dans Arduino IDE, sélectionner :
+
+``` text
+Outils → Programmateur → AVRISP mkII
+```
+
+puis utiliser :
+
+``` text
+Croquis → Téléverser avec un programmateur
+```
+
+> **Remarque :** la règle `MODE="0666"` autorise tous les utilisateurs
+> locaux à accéder à ce périphérique USB. Elle constitue une solution
+> simple pour une machine personnelle. Sur une machine
+> multi-utilisateur, l'utilisation d'un groupe dédié permettrait de
+> restreindre davantage les droits d'accès.
+
+### Résultat de la compilation testée
+
+La programmation a été vérifiée avec un ATmega328P et la configuration
+MiniCore indiquée ci-dessus.
+
+La compilation du programme utilise environ :
+
+``` text
+Mémoire Flash : 25018 octets (76 %)
+SRAM          : 1370 octets (66 %)
+```
+
+Le programme peut donc être chargé directement dans l'ATmega328P sans
+bootloader.
+
+Une démonstration générale de la programmation d'un ATmega328P autonome
+est également disponible dans cette vidéo :
+
+[Programmer un ATmega328P autonome --- vidéo
+YouTube](https://www.youtube.com/watch?v=Miov8Kn8dDk)
+
 
 ## Photographies du montage
 
