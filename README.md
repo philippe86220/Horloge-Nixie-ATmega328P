@@ -112,7 +112,7 @@ Les écrans ne sont pas rafraîchis en permanence : les deux afficheurs des minu
 > **Note concernant les liens GoTronic :** le site GoTronic peut parfois retourner une erreur 500 lorsqu'un lien est ouvert directement depuis GitHub. Si cela se produit, faire un clic droit sur le lien, choisir **« Copier le lien »**, puis coller l'adresse directement dans la barre d'adresse du navigateur. Il s'agit des liens :
 > - Module RTC I2C DS3231 ADA3013
 > - Lecteur de carte microSD uPesy
-> - Lecteur de carte microSD uPesy
+> - LED orange 5 mm L7113NC
 > 
 | Quantité | Composant | Remarque |
 |---:|---|---|
