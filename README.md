@@ -160,7 +160,7 @@ La ligne de réinitialisation des écrans n'est pas commandée par une broche du
 
 Le schéma présente l'ATmega328P et ses composants associés, le module RTC, le lecteur microSD, les quatre connecteurs destinés aux écrans ainsi que les deux LED orange.
 
-![Schéma électronique de l'horloge](hardware/Schematic_Fausse-Horloge-NIXIE-5V_2026-08-31.png)
+![Schéma électronique de l'horloge](hardware/Schematic_Fausse-Horloge-NIXIE-5V_2026-09-01.png)
 
 L'alimentation doit fournir un **5 V continu stabilisé**. Il faut respecter la polarité indiquée sur le schéma et ne pas appliquer directement une tension supérieure à l'entrée 5 V du montage.
 
