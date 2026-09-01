@@ -106,7 +106,7 @@ Soit :
 3 + 10 + 6 + 10 = 29 images
 ```
 
-Les écrans ne sont redessinés que lorsque le chiffre correspondant doit changer. Il n'est donc pas nécessaire de rafraîchir continuellement les quatre afficheurs.
+Les écrans ne sont pas rafraîchis en permanence : les deux afficheurs des minutes sont redessinés lors d'un changement de minute, et les deux afficheurs des heures lors d'un changement d'heure.
 
 ## Matériel
 
@@ -254,7 +254,7 @@ Le cast :
 (__FlashStringHelper*)
 ```
 
-indique que la chaîne de caractères se trouve en mémoire Flash et non en SRAM.
+permet de présenter cette adresse au code appelé comme une chaîne stockée en mémoire Flash. C'est PROGMEM qui place réellement le tableau dans la mémoire programme de l'ATmega328P.
 
 Le fonctionnement peut être résumé ainsi :
 
