@@ -317,9 +317,9 @@ Le programme est envoyé directement dans l'ATmega328P avec :
 Croquis → Téléverser avec un programmateur
 ```
 
-Comme la programmation s'effectue par ISP, aucun port série
-`/dev/ttyACM*` ou `/dev/ttyUSB*` n'est nécessaire. Il est donc normal
-que le menu **Port** de l'IDE Arduino reste vide.
+Comme la programmation s'effectue directement par l'interface ISP avec l'AVRISP mkII, aucun port série n'est nécessaire pour téléverser le programme.
+
+L'IDE Arduino peut néanmoins afficher un port série présent sur le système, par exemple `/dev/ttyS0`. Ce port est indépendant de l'AVRISP mkII et n'intervient pas dans la programmation de l'ATmega328P.
 
 ### Utilisation de l'AVRISP mkII sous Debian 13
 
